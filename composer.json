@@ -1,14 +1,15 @@
 {
-	"name": "cakephp/cakephp",
-	"description": "The CakePHP framework",
-	"type": "library",
-	"keywords": ["framework"],
-	"homepage": "http://cakephp.org",
+	"name": "mbicknese/WhiteChocolateCheese",
+	"description": "Just a sample CakePHP application",
 	"license": "MIT",
 	"authors": [
 		{
 			"name": "CakePHP Community",
 			"homepage": "https://github.com/cakephp/cakephp/graphs/contributors"
+		},
+		{
+			"name": "Maarten Bicknese",
+            "homepage": "https://github.com/mbicknese"
 		}
 	],
 	"support": {
