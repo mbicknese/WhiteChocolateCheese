@@ -31,33 +31,29 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->css('cake.generic');
 
 		echo $this->fetch('meta');
+		echo $this->Html->css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
 		echo $this->fetch('css');
-		echo $this->fetch('script');
+		echo $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js');
 	?>
 </head>
 <body>
-	<div id="container">
-		<div id="header">
+	<div class="container">
+		<header>
 			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
-		</div>
-		<div id="content">
+		</header>
+		<main id="content">
 
 			<?php echo $this->Flash->render(); ?>
 
 			<?php echo $this->fetch('content'); ?>
-		</div>
-		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-					'http://www.cakephp.org/',
-					array('target' => '_blank', 'escape' => false, 'id' => 'cake-powered')
-				);
-			?>
-			<p>
-				<?php echo $cakeVersion; ?>
-			</p>
-		</div>
+		</main>
+		<footer>
+			<p>CakePHP application by <a href="https://github.com/mbicknese">Maarten Bicknese</a></p>
+		</footer>
 	</div>
-	<?php echo $this->element('sql_dump'); ?>
+	<?php
+		echo $this->Html->script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js');
+		echo $this->fetch('script');
+	?>
 </body>
 </html>
