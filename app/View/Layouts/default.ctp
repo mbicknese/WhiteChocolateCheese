@@ -38,18 +38,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 </head>
 <body>
 	<div class="container">
-		<header>
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
-		</header>
-		<main id="content">
-
 			<?php echo $this->Flash->render(); ?>
 
 			<?php echo $this->fetch('content'); ?>
-		</main>
-		<footer>
-			<p>CakePHP application by <a href="https://github.com/mbicknese">Maarten Bicknese</a></p>
-		</footer>
 	</div>
 	<?php
 		echo $this->Html->script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js');
