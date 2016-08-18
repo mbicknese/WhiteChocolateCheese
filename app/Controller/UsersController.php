@@ -25,16 +25,6 @@ class UsersController extends AppController
 		)
 	);
 
-	public function beforeFilter()
-	{
-		parent::beforeFilter();
-	}
-
-	public function index()
-	{
-		// Not yet implemented
-	}
-
 	/**
 	 * Renders login page and handles login post attempts
 	 *
