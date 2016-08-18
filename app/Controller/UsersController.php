@@ -35,6 +35,12 @@ class UsersController extends AppController
 		// Not yet implemented
 	}
 
+	/**
+	 * Renders login page and handles login post attempts
+	 *
+	 * @todo Move logic to own component?
+	 * @return \Cake\Network\Response|null
+	 */
 	public function login()
 	{
 		$this->set('failed_attempt', false);
@@ -42,15 +48,18 @@ class UsersController extends AppController
 		if ($this->request->is('post')) {
 			$data = $this->data['User'];
 			$data['username'] = $this->User->generateUsername($data['password']);
+			$this->request->data['User'] = $data;
 
-			if ($this->Auth->login($data)) {
+			if ($this->Auth->login()) {
 				return $this->redirect($this->Auth->redirectUrl());
 			}
 			$this->Session->setFlash(__('Opgegeven code is niet bekend'), 'alert', array(
 				'plugin' => 'BoostCake',
 				'class' => 'alert-danger'
 			));
+
 			$this->set('failed_attempt', true);
+			$this->set('code', $data['password']);
 		}
 	}
 

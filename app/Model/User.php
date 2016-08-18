@@ -41,6 +41,6 @@ class User extends AppModel {
 	public function generateUsername($password)
 	{
 		$hash = md5($password . 'unsavesalt12345');
-		return substr($hash, 2, 16);
+		return substr($hash, 1, 16);
 	}
 }
