@@ -2,6 +2,7 @@
 
 App::uses('FormAuthenticate', 'Controller/Component/Auth');
 App::uses('User', 'Model');
+App::uses('LoginAttempt', 'Model');
 
 class CodeFormAuthenticate extends FormAuthenticate
 {
@@ -15,6 +16,8 @@ class CodeFormAuthenticate extends FormAuthenticate
 		$request->data[$model][$fields['username']] =
 			User::generateUsername($request->data[$model][$fields['password']]);
 
-		return parent::authenticate($request, $response);
+		$user = parent::authenticate($request, $response);
+		LoginAttempt::createFromRequest($request, $user);
+		return $user;
 	}
 }
