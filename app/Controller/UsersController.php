@@ -18,7 +18,7 @@ class UsersController extends AppController
 				'action' => 'login'
 			),
 			'authenticate' => array(
-				'Form' => array(
+				'CodeForm' => array(
 					'passwordHasher' => 'Blowfish'
 				)
 			)
@@ -38,7 +38,6 @@ class UsersController extends AppController
 	/**
 	 * Renders login page and handles login post attempts
 	 *
-	 * @todo Move logic to own component?
 	 * @return \Cake\Network\Response|null
 	 */
 	public function login()
@@ -46,10 +45,6 @@ class UsersController extends AppController
 		$this->set('failed_attempt', false);
 
 		if ($this->request->is('post')) {
-			$data = $this->data['User'];
-			$data['username'] = $this->User->generateUsername($data['password']);
-			$this->request->data['User'] = $data;
-
 			if ($this->Auth->login()) {
 				return $this->redirect($this->Auth->redirectUrl());
 			}
@@ -59,7 +54,7 @@ class UsersController extends AppController
 			));
 
 			$this->set('failed_attempt', true);
-			$this->set('code', $data['password']);
+			$this->set('code', $this->request->data['User']['password']);
 		}
 	}
 

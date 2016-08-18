@@ -38,7 +38,7 @@ class User extends AppModel {
 	 * @param  $password string
 	 * @return string
 	 */
-	public function generateUsername($password)
+	public static function generateUsername($password)
 	{
 		$hash = md5($password . 'unsavesalt12345');
 		return substr($hash, 1, 16);
