@@ -6,7 +6,13 @@
 <main class="well">
 	<form method="POST" action="login">
 		<div class="form-group<?= $failed_attempt?' has-error':'' ?>">
-			<input name="data[User][password]" placeholder="code" type="text" class="form-control" />
+			<input
+				name="data[User][password]"
+				placeholder="code"
+				type="text"
+				class="form-control"
+				<?= isset($code) ? "value=\"$code\"" : '' ?>
+			/>
 		</div>
 		<input type="submit" class="btn btn-primary btn-block" value="Login" />
 	</form>
